@@ -21,7 +21,7 @@ router.post('/', async (req, res) => {
         'X-Title': 'Visit La Trinidad'
       },
       body: JSON.stringify({
-        model: 'tngtech/deepseek-r1t2-chimera:free', // replace if you have a different model
+        model: 'tngtech/deepseek-r1t2-chimera:free', 
         messages: [
           { role: 'system', content: "You are a friendly tour guide for La Trinidad, Benguet." },
           { role: 'user', content: message }
