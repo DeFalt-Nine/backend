@@ -12,21 +12,27 @@ router.post('/', async (req, res) => {
       return res.status(500).json({ error: 'API_KEY is missing on the server' });
     }
 
-    const openRouterResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        'Authorization': `Bearer ${process.env.API_KEY}`,
-        'HTTP-Referer': 'https://visit-la-trinidad.example.com',
-        'X-Title': 'Visit La Trinidad'
-      },
-      body: JSON.stringify({
-        model: 'tngtech/deepseek-r1t2-chimera:free', 
-        messages: [
-          { role: 'system', content: "You are a friendly tour guide for La Trinidad, Benguet." },
-          { role: 'user', content: message }
-        ]
-      })
+     const openRouterResponse = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.API_KEY}`,
+            'HTTP-Referer': 'https://visit-la-trinidad.example.com',
+            'X-Title': 'Visit La Trinidad', 
+        },
+        body: JSON.stringify({
+            model: 'tngtech/deepseek-r1t2-chimera:free',
+            messages: [
+                {
+                    role: 'system',
+                    content: "You are a friendly and helpful tour guide for La Trinidad, Benguet in the Philippines. Your knowledge is focused on this specific location. Answer the user's question about visiting the area concisely and in a conversational tone."
+                },
+                {
+                    role: 'user',
+                    content: message
+                }
+            ],
+        }),
     });
 
     const data = await openRouterResponse.json();
