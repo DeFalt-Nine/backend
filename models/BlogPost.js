@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> aa63773e332bdc2d2268d88e3c697b5d3e375116
 const mongoose = require('mongoose');
 
 const BlogPostSchema = new mongoose.Schema({
@@ -14,7 +11,6 @@ const BlogPostSchema = new mongoose.Schema({
   author: { type: String, required: true },
   date: { type: String, required: true },
   content: { type: String, required: true }, // HTML content for the full article
-<<<<<<< HEAD
   
   // Submission Workflow
   status: { 
@@ -29,8 +25,3 @@ const BlogPostSchema = new mongoose.Schema({
 }, { timestamps: true });
 
 module.exports = mongoose.models.BlogPost || mongoose.model('BlogPost', BlogPostSchema, 'blogposts');
-=======
-});
-
-module.exports = mongoose.models.BlogPost || mongoose.model('BlogPost', BlogPostSchema, 'blogposts');
->>>>>>> aa63773e332bdc2d2268d88e3c697b5d3e375116

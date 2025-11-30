@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 
 const express = require('express');
 const router = express.Router();
@@ -96,26 +95,3 @@ router.delete('/:id', checkAdmin, async (req, res) => {
 });
 
 module.exports = router;
-=======
-const express = require('express');
-const router = express.Router();
-const BlogPost = require('../models/BlogPost');
-
-// @desc    Fetch all blog posts
-// @route   GET /api/blog-posts
-// @access  Public
-router.get('/', async (req, res) => {
-  try {
-    const posts = await BlogPost.find().sort({ date: -1 }); // Sort by date descending
-    res.json(posts);
-  } catch (error) {
-    console.error("Error fetching blog posts:", error);
-    if (error.name === 'MongooseServerSelectionError') {
-      return res.status(503).json({ message: 'Could not connect to the database. Please check network configuration.' });
-    }
-    res.status(500).json({ message: 'Server Error while fetching blog posts.' });
-  }
-});
-
-module.exports = router;
->>>>>>> aa63773e332bdc2d2268d88e3c697b5d3e375116
