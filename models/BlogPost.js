@@ -3,13 +3,13 @@ const mongoose = require('mongoose');
 
 const BlogPostSchema = new mongoose.Schema({
   image: { type: String, required: true },
-  alt: { type: String, required: true },
+  alt: { type: String, required: false },
   badge: { type: String, required: true },
   readTime: { type: String, required: true },
   title: { type: String, required: true },
   description: { type: String, required: true },
   author: { type: String, required: true },
-  date: { type: String, required: true },
+  date: { type: String, required: false },
   content: { type: String, required: true }, // HTML content for the full article
   
   // Submission Workflow
