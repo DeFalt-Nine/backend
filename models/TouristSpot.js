@@ -14,7 +14,7 @@ const reviewSchema = new mongoose.Schema({
 
 const TouristSpotSchema = new mongoose.Schema({
   image: { type: String, required: true },
-  alt: { type: String, required: false },
+  alt: { type: String, required: true },
   name: { type: String, required: true },
   description: { type: String, required: true },
   location: { type: String, required: true },
@@ -31,7 +31,7 @@ const TouristSpotSchema = new mongoose.Schema({
       distance: { type: String, required: true },
     },
   ],
-  mapEmbedUrl: { type: String, required: false },
+  mapEmbedUrl: { type: String, required: true },
   reviews: [reviewSchema],
 });
 

@@ -1,24 +1,22 @@
+
 const mongoose = require('mongoose');
 
 const connectDB = async () => {
-  const mongoURI = process.env.MONGO_URI;
-
-  if (!mongoURI) {
-    console.error('FATAL ERROR: MONGO_URI is not defined in your environment variables.');
-    process.exit(1);
-  }
-
-  // Check if we are already connected to avoid multiple connections
+  // If already connected, do nothing
   if (mongoose.connection.readyState >= 1) {
     return;
   }
 
+  const mongoURI = process.env.MONGO_URI;
+
   try {
-    const conn = await mongoose.connect(mongoURI);
-    console.log(`MongoDB Connected: ${conn.connection.host}`);
+    const conn = await mongoose.connect(mongoURI, {
+        serverSelectionTimeoutMS: 5000, // Timeout after 5s instead of 30s for better user feedback
+    });
+    console.log(`[Database] MongoDB Connected: ${conn.connection.host}`);
   } catch (error) {
-    console.error(`Error connecting to MongoDB: ${error.message}`);
-    process.exit(1);
+    console.error(`[Database] Connection Error: ${error.message}`);
+    throw error; // Re-throw so middleware can handle it
   }
 };
 
