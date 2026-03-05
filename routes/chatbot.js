@@ -28,7 +28,7 @@ router.post('/', async (req, res) => {
             'X-Title': 'Visit La Trinidad',
         },
         body: JSON.stringify({
-            model: 'tngtech/deepseek-r1t2-chimera:free', 
+            model: 'google/gemma-3-12b-it:free', 
             messages: [
                 {
                     role: 'system',
